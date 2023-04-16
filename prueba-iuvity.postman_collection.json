@@ -1,0 +1,373 @@
+{
+	"info": {
+		"_postman_id": "add81b18-cc3e-4743-8c89-9f59a169a705",
+		"name": "prueba-iuvity",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14483371"
+	},
+	"item": [
+		{
+			"name": "usuario",
+			"item": [
+				{
+					"name": "Registrar Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"jonathan\",\n    \"username\": \"bazuco28\",\n    \"password\": \"123453\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/api/usuario/",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"usuario",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "Listar Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/api/product",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiYXp1Y28yOCIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE2ODE1ODAxNjMsImV4cCI6MTY4MTY2NjU2M30.YU8ns-94Q8zHS4wVYHdCAt9N7HqKd_1z8hPqLcWbICRcwW94gjggHCgZ6Daf0MleIF_EmUqItYTWCsSMdv23UA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreProduct\": \"avenger\",\n    \"descripcionProduct\": \"camiset de los vengadores\",\n    \"stock\": 12,\n    \"precio\": 120000\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/api/product",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiYXp1Y28yOCIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE2ODE1ODAxNjMsImV4cCI6MTY4MTY2NjU2M30.YU8ns-94Q8zHS4wVYHdCAt9N7HqKd_1z8hPqLcWbICRcwW94gjggHCgZ6Daf0MleIF_EmUqItYTWCsSMdv23UA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreProduct\":\"dragon ball z\",\n    \"descripcionProduct\":\"camiset de los vengadores\",\n    \"stock\":1,\n    \"precio\":120000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/api/product/4",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"product",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar producto x id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/api/product/2",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"product",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shop Cart",
+			"item": [
+				{
+					"name": "Añadir al carrito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiYXp1Y28yOCIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE2ODE1ODAxNjMsImV4cCI6MTY4MTY2NjU2M30.YU8ns-94Q8zHS4wVYHdCAt9N7HqKd_1z8hPqLcWbICRcwW94gjggHCgZ6Daf0MleIF_EmUqItYTWCsSMdv23UA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product\":{\n        \"idProduct\":4\n    },\n    \"cantidad\":12,\n    \"total\":0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/api/shopCart",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"shopCart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "consulatar Carrito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiYXp1Y28yOCIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE2ODE1ODAxNjMsImV4cCI6MTY4MTY2NjU2M30.YU8ns-94Q8zHS4wVYHdCAt9N7HqKd_1z8hPqLcWbICRcwW94gjggHCgZ6Daf0MleIF_EmUqItYTWCsSMdv23UA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/api/shopCart/shopUsuario",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"shopCart",
+								"shopUsuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiYXp1Y28yOCIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE2ODE1ODAxNjMsImV4cCI6MTY4MTY2NjU2M30.YU8ns-94Q8zHS4wVYHdCAt9N7HqKd_1z8hPqLcWbICRcwW94gjggHCgZ6Daf0MleIF_EmUqItYTWCsSMdv23UA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/api/shopCart/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"shopCart",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Registrar_usuario Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Jonathan\",\n  \"username\": \"bazuco28\",\n  \"email\": \"camanojhonatan@gmail.com\",\n  \"password\": \"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/api/auth/registrar",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"auth",
+								"registrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login_usuario Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"usernameOrEmail\": \"bazuco28\",\n    \"password\": \"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/api/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login_usuario Copy 2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiYXp1Y28yOCIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE2ODE1ODAxNjMsImV4cCI6MTY4MTY2NjU2M30.YU8ns-94Q8zHS4wVYHdCAt9N7HqKd_1z8hPqLcWbICRcwW94gjggHCgZ6Daf0MleIF_EmUqItYTWCsSMdv23UA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"usernameOrEmail\": \"bazuco28\",\n    \"password\": \"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/api/auth/consultar-usuario",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"auth",
+								"consultar-usuario"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
