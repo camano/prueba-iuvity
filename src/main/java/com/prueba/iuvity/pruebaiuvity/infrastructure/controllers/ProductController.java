@@ -16,6 +16,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/product")
 public class ProductController {
@@ -39,7 +41,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<?> saveProduct(@RequestBody Product product,@RequestHeader("Authorization") String token) {
+    public ResponseEntity<?> saveProduct(@Valid @RequestBody Product product, @RequestHeader("Authorization") String token) {
         if (StringUtils.hasText(token) && token.startsWith("Bearer")) {
             token =token.substring(7, token.length());
         }
@@ -64,7 +66,7 @@ public class ProductController {
             token =token.substring(7, token.length());
         }
         String username = jwtTokenProvider.obtenerUsernameDelJWT(token);
-        Usuario usuario = usuarioRepositorio.findByUsername(username).orElseThrow(()->new UsuarioException(HttpStatus.BAD_REQUEST,"NO se encontro el usuario"));
+        Usuario usuario = usuarioRepositorio.findByUsername(username).orElse(null);
         producto.setUsuario(UsuarioMapper.toDomainModelUsuario(usuario));
         return productService.updateProduct(productId, producto).map(product -> new ResponseEntity<>(product, HttpStatus.OK))
                 .orElseThrow(()-> new ProductException(HttpStatus.BAD_REQUEST, "Hubo un error al editar el producto"));

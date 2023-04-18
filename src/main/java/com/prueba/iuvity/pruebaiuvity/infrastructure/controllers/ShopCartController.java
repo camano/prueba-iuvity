@@ -3,6 +3,7 @@ package com.prueba.iuvity.pruebaiuvity.infrastructure.controllers;
 import com.prueba.iuvity.pruebaiuvity.aplication.services.ShopCartService;
 import com.prueba.iuvity.pruebaiuvity.domain.models.ShopCart;
 import com.prueba.iuvity.pruebaiuvity.domain.models.UsuarioModel;
+import com.prueba.iuvity.pruebaiuvity.infrastructure.exception.UsuarioException;
 import com.prueba.iuvity.pruebaiuvity.infrastructure.mapper.ShopCartMapper;
 import com.prueba.iuvity.pruebaiuvity.infrastructure.mapper.UsuarioMapper;
 import com.prueba.iuvity.pruebaiuvity.security.entity.Usuario;
@@ -51,7 +52,8 @@ public class ShopCartController {
             token =token.substring(7, token.length());
         }
         String username = jwtTokenProvider.obtenerUsernameDelJWT(token);
-        Usuario usuario = usuarioRepositorio.findByUsername(username).orElse(null);
+
+        Usuario usuario = usuarioRepositorio.findByUsername(username).orElseThrow(() -> new UsuarioException(HttpStatus.BAD_REQUEST,"No se encontro el usuario"));
         return new ResponseEntity<>(shopCartService.getCartUsuario(usuario), HttpStatus.ACCEPTED);
     }
 
@@ -59,9 +61,9 @@ public class ShopCartController {
     @DeleteMapping("/{shopId}")
     public ResponseEntity<?> deleteShopCart(@PathVariable Long shopId) {
         if (shopCartService.deleteCart(shopId)) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>("Se Elimino del carrito de compras",HttpStatus.NO_CONTENT);
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("No se encontro el producto",HttpStatus.NOT_FOUND);
         }
     }
 }

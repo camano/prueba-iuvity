@@ -7,7 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 public class JWTAuthResonseDTO {
 
 	private String tokenDeAcceso;
-	private String tipoDeToken = "Bearer";
+		private String tipoDeToken = "Bearer";
 	private String nombreUsuario;
 	private Collection<? extends GrantedAuthority> authorities;
 

@@ -10,5 +10,5 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor
 public class UsuarioException extends RuntimeException{
     private HttpStatus estado;
-    private String mensaje;
+    private String message;
 }

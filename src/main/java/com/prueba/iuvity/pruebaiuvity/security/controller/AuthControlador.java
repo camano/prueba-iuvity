@@ -90,11 +90,9 @@ public class AuthControlador {
 	@GetMapping("/consultar-usuario")
 	public ResponseEntity<?> consultarUsuario(@RequestHeader("Authorization") String token){
 		Usuario usuario= new Usuario();
-		if (StringUtils.hasText(token) && token.startsWith("Bearer")) {
-			token =token.substring(7, token.length());
-			String username = jwtTokenProvider.obtenerUsernameDelJWT(token);
-			usuario = usuarioRepositorio.findByUsername(username).orElse(null);
-		}
+
+			usuario = usuarioRepositorio.findByUsername("bazuco28").orElse(null);
+
 
 		return new ResponseEntity<>(usuario,HttpStatus.OK);
 	}
